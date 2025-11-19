@@ -1,0 +1,93 @@
+# Documentation files (project documentation)
+COMPONENT_STRUCTURE.md
+DEPLOYMENT_CHECKLIST.md
+DOCKER_SETUP.md
+LAYOUT_UPDATES.md
+PROJECT_COMPLETE.md
+QUICK_START.md
+README_IMPLEMENTATION.md
+VISUAL_GUIDE.md
+IMPLEMENTATION_SUMMARY.md
+
+# Environment files
+.env.example
+.env
+.env.local
+.env.*.local
+
+# Makefile
+Makefile
+
+# Frontend - Build and Dependencies
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/dist/
+frontend/build/
+
+# Frontend - Package lock files
+frontend/package-lock.json
+frontend/yarn.lock
+frontend/pnpm-lock.yaml
+
+# Frontend - IDE and editor files
+frontend/.vscode/
+frontend/.idea/
+frontend/*.swp
+frontend/*.swo
+frontend/*~
+frontend/.DS_Store
+
+# Frontend - Temporary files
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.eslintcache
+
+# Backend - Build and Dependencies
+backend/venv/
+backend/.venv/
+backend/env/
+backend/__pycache__/
+backend/*.pyc
+backend/dist/
+backend/build/
+backend/*.egg-info/
+
+# Backend - IDE and editor files
+backend/.vscode/
+backend/.idea/
+backend/*.swp
+backend/*.swo
+backend/*~
+backend/.DS_Store
+
+# Data directory
+data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# General Python
+*.pyc
+__pycache__/
+*.egg-info/
+.pytest_cache/
+
+# General Node
+node_modules/
+.npm/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
