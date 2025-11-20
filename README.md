@@ -174,11 +174,13 @@ Qdrant Database + OpenAI API
 
 1. Add markdown (`.md`) or text (`.txt`) files to the `data/` directory
 2. Use clear section headings for better organization:
+
    ```markdown
    # Section Title
 
    Content here...
    ```
+
 3. Call `/api/ingest` via the Admin Panel or API to index the documents
 4. Ask questions about the content
 
@@ -217,6 +219,105 @@ data/
 - Add more relevant documents to `data/`
 - Rephrase your question
 - Check ingestion status: `GET /api/metrics`
+
+---
+
+## 📈 Future Enhancements
+
+### Phase 1: Text-to-Speech & Audio Integration (Upcoming)
+
+**What We'll Build:**
+
+- 🔊 **Text-to-Speech (TTS)**: Convert answers to natural-sounding audio
+- 🎙️ **Voice Input**: Accept spoken queries (Speech-to-Text)
+- 🎧 **Audio UI**: Play/pause/download response audio
+- 📱 **Mobile Voice**: Native voice control on mobile
+
+**Implementation Details:**
+
+```
+User Flow:
+1. User speaks query → Speech-to-Text (Whisper API)
+2. Process query → RAG pipeline
+3. Generate answer → Text-to-Speech (ElevenLabs / Google TTS)
+4. Stream audio → User hears response
+```
+
+**Tech Stack:**
+
+- **Speech-to-Text**: OpenAI Whisper
+- **Text-to-Speech**: ElevenLabs (natural) or Google TTS
+- **Audio Format**: MP3/WAV with streaming
+
+**Benefits:**
+
+- 📞 Better accessibility (blind users)
+- 🚗 Hands-free operation (vehicles, calls)
+- 🌍 Natural interaction
+- 📈 Engagement increase
+
+---
+
+### Phase 2: Multi-Agent System & Interaction
+
+**What We'll Build:**
+
+- 🤖 **AI Agent Network**: Multiple specialized agents that collaborate
+- 💬 **Agent-to-Agent Communication**: Agents can call each other
+- 🎯 **Task Delegation**: Agents route requests to specialists
+- 📊 **Conversation History**: Track agent interactions
+
+**Example Interaction Flow:**
+
+```
+User: "My order hasn't arrived and I want a refund"
+
+Step 1: Orchestrator receives query
+Step 2: Orders & Shipping Agent
+  - Retrieves order status
+  - Realizes delivery delayed
+  - Delegates to Returns Agent
+
+Step 3: Returns & Refunds Agent
+  - Checks refund eligibility
+  - Applies policy rules
+  - Requests authorization from Policy Agent
+
+Step 4: Policy Agent
+  - Confirms company policy
+  - Returns approval + conditions
+
+Step 5: Final Response Generated
+  - Answer synthesized from all agents
+  - Complete action plan provided
+  - All sources cited
+```
+
+---
+
+### Phase 3: Continuous Improvements
+
+**Short-term (1-2 weeks):**
+
+- [ ] Add real-time search (Google/Bing integration)
+- [ ] Implement conversation memory
+- [ ] Add user feedback mechanism
+- [ ] Performance benchmarking
+
+**Medium-term (1-2 months):**
+
+- [ ] Multi-language support
+- [ ] Document versioning
+- [ ] A/B testing framework
+- [ ] Analytics dashboard
+
+**Long-term (Ongoing):**
+
+- [ ] Fine-tuned embeddings model
+- [ ] Custom LLM training on company data
+- [ ] Mobile app (React Native)
+- [ ] Browser extension
+- [ ] Slack/Teams integration
 
 ---
 

@@ -19,12 +19,12 @@ interface MetricCardProps {
 }
 
 const MetricCard: React.FC<MetricCardProps> = ({ icon, label, value }) => (
-  <div className="bg-white border border-gray-300 rounded-lg p-8 flex flex-col gap-3 w-full">
+  <div className="bg-white border border-gray-300 rounded-lg p-4 sm:p-6 md:p-8 flex flex-col gap-3 w-full">
     <div className="flex gap-3 items-center">
       <div className="text-gray-900">{icon}</div>
-      <span className="text-sm font-semibold text-gray-900">{label}</span>
+      <span className="text-xs sm:text-sm font-semibold text-gray-900">{label}</span>
     </div>
-    <div className="text-4xl font-semibold text-gray-900">{value}</div>
+    <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">{value}</div>
   </div>
 );
 
@@ -62,17 +62,17 @@ export default function AdminPanel() {
   return (
     <div className="flex flex-col gap-12 w-full">
       {/* Action Buttons */}
-      <div className="flex gap-5">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
         <button
           onClick={ingest}
           disabled={busy}
-          className="px-5 py-2.5 bg-black text-white rounded-lg hover:bg-gray-900 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors font-semibold text-base"
+          className="px-4 sm:px-5 py-2 sm:py-2.5 bg-black text-white rounded-lg hover:bg-gray-900 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors font-semibold text-sm sm:text-base w-full sm:w-auto"
         >
           {busy ? "Indexing..." : "Ingest Sample Docs"}
         </button>
         <button
           onClick={refresh}
-          className="px-5 py-2.5 bg-black text-white rounded-lg hover:bg-gray-900 transition-colors font-semibold text-base flex items-center gap-2"
+          className="px-4 sm:px-5 py-2 sm:py-2.5 bg-black text-white rounded-lg hover:bg-gray-900 transition-colors font-semibold text-sm sm:text-base flex items-center justify-center gap-2 w-full sm:w-auto"
         >
           Refresh Metrics
         </button>

@@ -22,13 +22,23 @@ export default function Sidebar({
 }: SidebarProps) {
   return (
     <aside className="w-64 bg-gray-50 border-r border-gray-200 h-screen flex flex-col">
-      {/* Header */}
-      <div className="p-5 border-b border-gray-200 flex items-center justify-between">
+      {/* Header - Hidden on mobile/tablet as it's shown in top nav */}
+      <div className="hidden lg:flex p-5 border-b border-gray-200 items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-black rounded-md flex items-center justify-center">
             <span className="text-white text-sm font-bold">AQ</span>
           </div>
           <h1 className="text-xl font-bold text-gray-900">AQReight</h1>
+        </div>
+      </div>
+
+      {/* Header - Shown on mobile/tablet only */}
+      <div className="lg:hidden flex p-4 border-b border-gray-200 items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 bg-black rounded-md flex items-center justify-center">
+            <span className="text-white text-xs font-bold">AQ</span>
+          </div>
+          <h1 className="text-lg font-bold text-gray-900">AQReight</h1>
         </div>
       </div>
 

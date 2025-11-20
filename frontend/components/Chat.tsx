@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import { apiAsk } from "@/lib/api";
 import { Copy, RotateCw, Share2, SendIcon } from "lucide-react";
+import { TextShimmer } from "@/components/ui/text-shimmer";
 
 type Message = {
   role: "user" | "assistant";
@@ -9,38 +10,6 @@ type Message = {
   citations?: { title: string; section?: string }[];
   chunks?: { title: string; section?: string; text: string }[];
 };
-
-// Shimmer text component for thinking animation
-const ShimmerText = () => (
-  <div className="inline-block">
-    <style jsx>{`
-      @keyframes shimmer {
-        0% {
-          background-position: -1000px 0;
-        }
-        100% {
-          background-position: 1000px 0;
-        }
-      }
-      .shimmer-text {
-        background: linear-gradient(
-          90deg,
-          #e5e7eb 0%,
-          #f3f4f6 20%,
-          #e5e7eb 40%,
-          #e5e7eb 100%
-        );
-        background-size: 1000px 100%;
-        animation: shimmer 2s infinite;
-        display: inline-block;
-        border-radius: 4px;
-      }
-    `}</style>
-    <span className="shimmer-text text-sm text-gray-600 px-3 py-2 rounded">
-      Thinking...
-    </span>
-  </div>
-);
 
 export default function Chat() {
   const [messages, setMessages] = React.useState<Message[]>([]);
@@ -88,14 +57,14 @@ export default function Chat() {
   return (
     <div className="flex flex-col h-full">
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-8 py-6 space-y-6">
+      <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {messages.length === 0 && (
-          <div className="h-full flex items-center justify-center text-center">
+          <div className="h-full flex items-center justify-center text-center px-4">
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+              <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">
                 Start a conversation
               </h2>
-              <p className="text-gray-600">
+              <p className="text-sm sm:text-base text-gray-600">
                 Ask questions about policies or products
               </p>
             </div>
@@ -110,9 +79,9 @@ export default function Chat() {
             }`}
           >
             <div
-              className={`max-w-2xl ${
+              className={`${
                 m.role === "user"
-                  ? "bg-gray-100 text-gray-900 rounded-2xl px-4 py-3"
+                  ? "max-w-xs sm:max-w-sm md:max-w-2xl bg-gray-100 text-gray-900 rounded-2xl px-3 sm:px-4 py-2 sm:py-3"
                   : "w-full"
               }`}
             >
@@ -186,7 +155,12 @@ export default function Chat() {
         {/* Shimmer loading indicator - below messages */}
         {loading && (
           <div className="flex justify-start pt-4">
-            <ShimmerText />
+            <TextShimmer
+              duration={1}
+              className="text-sm text-gray-600 font-medium"
+            >
+              Thinking...
+            </TextShimmer>
           </div>
         )}
 
@@ -194,8 +168,8 @@ export default function Chat() {
       </div>
 
       {/* Input */}
-      <div className="border-t border-gray-200 px-8 py-4 bg-white">
-        <div className="flex gap-3">
+      <div className="border-t border-gray-200 px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-white">
+        <div className="flex gap-2 sm:gap-3">
           <input
             placeholder="Ask about policy or products..."
             value={q}
@@ -206,15 +180,15 @@ export default function Chat() {
                 send();
               }
             }}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="flex-1 px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent text-sm sm:text-base"
           />
           <button
             onClick={send}
             disabled={loading || !q.trim()}
-            className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-900 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+            className="px-3 sm:px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-900 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
           >
             <SendIcon className="w-4 h-4" />
-            <span className="text-sm">Send</span>
+            <span className="text-sm hidden sm:inline">Send</span>
           </button>
         </div>
       </div>
