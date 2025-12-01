@@ -64,7 +64,7 @@ backend/*~
 backend/.DS_Store
 
 # Data directory
-data/
+!data/
 
 # OS files
 .DS_Store
